@@ -43,6 +43,7 @@ const getFolder = () => {
 
 try {
   walk(getFolder(), getRegexFilter(), function (filename) {
+    console.log(filename);
     exec(`nimpretty --maxLineLen:999 {filename}`, (err, stdout, stderr) => {
       if (err) {
         console.log(stderr);
