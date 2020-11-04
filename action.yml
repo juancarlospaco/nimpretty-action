@@ -1,8 +1,14 @@
 name: 'nimpretty-action'
 description: 'Nimpretty GitHub Action'
 inputs:
-  folder: "."
-  filter: /\.nim$/
+  folder:
+    description: 'Folder to start recursive walking from'
+    required: true
+    default: '.'
+  filter:
+    description: 'Regex to filter the recursive walking files'
+    required: true
+    default: "/\\.nim$/"
 runs:
   using: 'node12'
   main: 'index.js'
