@@ -17,17 +17,17 @@ const walk = (startPath, filter, callback) => {
     if (stat.isDirectory()) {
         walk(filename, filter, callback);
     } else {
-      if (filter.test(filename)) callback(filename);
+      if (filename.indexOf(filter) >= 0) callback(filename);
     }
   };
 };
 
 
-const getRegexFilter = () => {
+const getFilter = () => {
   try {
-    return new RegExp(core.getInput('filter').trim());
+    return new RegExp(core.getInput('extension').trim());
   } catch (err) {
-    return /\.nim$/;
+    return ".nim";
   };
 };
 
@@ -41,9 +41,9 @@ const getFolder = () => {
 };
 
 console.log(getFolder());
-console.log(getRegexFilter());
+console.log(getFilter());
 try {
-  walk(getFolder(), getRegexFilter(), function (filename) {
+  walk(getFolder(), getFilter(), function (filename) {
     console.log("walk()");
     exec(`nimpretty --maxLineLen:999 {filename}`, (err, stdout, stderr) => {
       if (err) {

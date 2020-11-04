@@ -14,4 +14,4 @@ jobs:
         uses: juancarlospaco/nimpretty-action@main
         with:
           folder: "."
-          filter: "/\\.nim$/"
+          extension: ".nim"
