@@ -17,7 +17,6 @@ const walk = (startPath, callback) => {
   if (!fs.existsSync(startPath)) {
     return;
   }
-
   var files = fs.readdirSync(startPath);
   for (var i = 0; i < files.length; i++) {
     var filename = path.join(startPath, files[i]);
@@ -35,17 +34,13 @@ const walk = (startPath, callback) => {
 
 try {
   const cmd = `nimpretty --maxLineLen:${ cfg('maxLineLen') } --indent:${ cfg('indent') } `;
-  console.log(cmd);
   walk(cfg('folder'), function (filename) {
-    console.log("walk()");
+    console.log(cmd + filename);
     exec(cmd + filename, (err, stdout, stderr) => {
       if (err) {
-        console.log(stderr);
-        console.log(err);
+        console.log(stderr, stdout, err);
         return;
-      } else {
-        console.log(stdout);
-      }
+      };
     });
   });
 } catch (error) {
