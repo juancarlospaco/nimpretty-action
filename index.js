@@ -14,7 +14,6 @@ const cfg = (key) => {
 
 
 const walk = (startPath, callback) => {
-  console.log(startPath);
   if (!fs.existsSync(startPath)) {
     return;
   }
@@ -26,7 +25,7 @@ const walk = (startPath, callback) => {
     if (stat.isDirectory()) {
         walk(filename, callback);
     } else {
-      if (filename.indexOf(".nim") >= 0) {
+      if (filename.length > 0 && filename[0] != "." && filename.substr(filename.length - 4, filename.length) == ".nim") {
         callback(filename);
       }
     }
@@ -35,7 +34,7 @@ const walk = (startPath, callback) => {
 
 
 try {
-  const cmd = `nimpretty --maxLineLen:{cfg('maxLineLen')} --indent:{cfg('indent')} `;
+  const cmd = `nimpretty --maxLineLen:${ cfg('maxLineLen') } --indent:${ cfg('indent') } `;
   console.log(cmd);
   walk(cfg('folder'), function (filename) {
     console.log("walk()");
