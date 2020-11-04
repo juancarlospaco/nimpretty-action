@@ -23,19 +23,6 @@ const walk = (startPath, filter, callback) => {
 };
 
 
-const nimprettyfy = (filename) => {
-  exec('nimpretty --maxLineLen:999 ' + filename, (err, stdout, stderr) => {
-    if (err) {
-      console.warning(err);
-      return;
-    } else {
-      console.log(`stdout: ${stdout}`);
-      console.log(`stderr: ${stderr}`);
-    }
-  });
-};
-
-
 const getRegexFilter = () => {
   try {
     return core.getInput('filter');
@@ -55,7 +42,17 @@ const getFolder = () => {
 
 
 try {
-  walk(getFolder(), getRegexFilter(), nimprettyfy(filename));
+  walk(getFolder(), getRegexFilter(), function (filename) {
+    exec('nimpretty --maxLineLen:999 ' + filename, (err, stdout, stderr) => {
+      if (err) {
+        console.warning(err);
+        return;
+      } else {
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+      }
+    });
+  });
 } catch (error) {
   core.setFailed(error.message);
 }
