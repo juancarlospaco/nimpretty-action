@@ -12,7 +12,7 @@ inputs:
   maxLineLen:
     description: '--maxLineLen'
     required: false
-    default: 999
+    default: 999  # Conservative because some people use long lines (Regex, etc).
 runs:
   using: 'node12'
   main: 'index.js'
