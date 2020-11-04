@@ -6,6 +6,7 @@ const { exec } = require('child_process');
 
 
 const cfg = (key) => {
+  console.assert(key.length > 0);
   core.getInput(key).trim();
 };
 
@@ -23,7 +24,9 @@ const walk = (startPath, callback) => {
     if (stat.isDirectory()) {
         walk(filename, callback);
     } else {
-      if (filename.indexOf(".nim") >= 0) callback(filename);
+      if (filename.indexOf(".nim") >= 0) {
+        callback(filename);
+      }
     }
   };
 };
