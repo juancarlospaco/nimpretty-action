@@ -11,6 +11,7 @@ const cfg = (key) => {
 
 
 const walk = (startPath, callback) => {
+  console.log(startPath);
   if (!fs.existsSync(startPath)) {
     return;
   }
@@ -29,6 +30,7 @@ const walk = (startPath, callback) => {
 
 
 try {
+  console.log("try");
   walk(cfg('folder'), function (filename) {
     console.log("walk()");
     exec(`nimpretty --maxLineLen:{cfg('maxLineLen')} --indent:{cfg('indent')} '{filename}'`, (err, stdout, stderr) => {
