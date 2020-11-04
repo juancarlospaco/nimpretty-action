@@ -5,10 +5,10 @@ inputs:
     description: 'Folder to start recursive walking from'
     required: true
     default: '.'
-  filter:
-    description: 'Regex to filter the recursive walking files'
+  extension:
+    description: 'File Extension to filter the recursive walking files'
     required: true
-    default: "/\\.nim$/"
+    default: ".nim"
 runs:
   using: 'node12'
   main: 'index.js'
