@@ -1,0 +1,11 @@
+name: 'nimpretty-action'
+description: 'Nimpretty GitHub Action'
+inputs:
+  folder: "."
+  filter: /\.nim$/
+runs:
+  using: 'node12'
+  main: 'index.js'
+branding:
+  icon: 'eye'
+  color: 'yellow'
