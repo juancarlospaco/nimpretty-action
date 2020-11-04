@@ -13,5 +13,5 @@ jobs:
       - name: nimpretty
         uses: juancarlospaco/nimpretty-action@main
         with:
-            folder: "."
-            filter: "/\\.nim$/"
+          folder: "."
+          filter: "/\\.nim$/"
