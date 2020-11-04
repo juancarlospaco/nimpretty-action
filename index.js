@@ -7,7 +7,7 @@ const { exec } = require('child_process');
 
 const cfg = (key) => {
   console.assert(key.length > 0);
-  var result = core.getInput(key).trim();
+  const result = core.getInput(key).trim();
   console.assert(result.length > 0);
   return result;
 };
@@ -42,7 +42,7 @@ try {
     exec(cmd + filename, (err, stdout, stderr) => {
       if (err) {
         console.log(stderr);
-        console.warning(err);
+        console.log(err);
         return;
       } else {
         console.log(stdout);
