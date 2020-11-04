@@ -8,9 +8,10 @@ jobs:
       - uses: jiro4989/setup-nim-action@v1
         with:
           nim-version: '1.4.0'
-    steps:
-    - name: nimpretty
-      uses: juancarlospaco/nimpretty-action@main
-      with:
-          folder: "."
-          filter: /\.nim$/
+
+
+      - name: nimpretty
+        uses: juancarlospaco/nimpretty-action@main
+        with:
+            folder: "."
+            filter: /\.nim$/
