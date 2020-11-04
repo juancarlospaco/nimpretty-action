@@ -24,7 +24,6 @@ const walk = (startPath, filter, callback) => {
 
 
 const getRegexFilter = () => {
-  console.log("getRegexFilter()");
   try {
     return new RegExp(core.getInput('filter').trim());
   } catch (err) {
@@ -34,7 +33,6 @@ const getRegexFilter = () => {
 
 
 const getFolder = () => {
-  console.log("getFolder()");
   try {
     return core.getInput('folder').trim();
   } catch (err) {
@@ -42,7 +40,8 @@ const getFolder = () => {
   };
 };
 
-
+console.log(getFolder());
+console.log(getRegexFilter());
 try {
   walk(getFolder(), getRegexFilter(), function (filename) {
     console.log("walk()");
