@@ -25,7 +25,7 @@ const walk = (startPath, filter, callback) => {
 
 const getRegexFilter = () => {
   try {
-    return core.getInput('filter');
+    return new RegExp(core.getInput('filter'));
   } catch (err) {
     return /\.nim$/;
   };
