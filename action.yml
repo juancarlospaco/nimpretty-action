@@ -3,12 +3,16 @@ description: 'Nimpretty GitHub Action'
 inputs:
   folder:
     description: 'Folder to start recursive walking from'
-    required: true
+    required: false
     default: '.'
   extension:
     description: 'File Extension to filter the recursive walking files'
-    required: true
+    required: false
     default: ".nim"
+  maxLineLen:
+    description: '--maxLineLen'
+    required: false
+    default: 999
 runs:
   using: 'node12'
   main: 'index.js'

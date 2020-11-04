@@ -5,6 +5,11 @@ const core = require('@actions/core');
 const { exec } = require('child_process');
 
 
+const cfg = (key) => {
+  core.getInput(key).trim();
+};
+
+
 const walk = (startPath, filter, callback) => {
   if (!fs.existsSync(startPath)) {
     return;
@@ -23,29 +28,10 @@ const walk = (startPath, filter, callback) => {
 };
 
 
-const getFilter = () => {
-  try {
-    return new RegExp(core.getInput('extension').trim());
-  } catch (err) {
-    return ".nim";
-  };
-};
-
-
-const getFolder = () => {
-  try {
-    return core.getInput('folder').trim();
-  } catch (err) {
-    return '.';
-  };
-};
-
-console.log(getFolder());
-console.log(getFilter());
 try {
-  walk(getFolder(), getFilter(), function (filename) {
+  walk(cfg('folder'), cfg('extension'), function (filename) {
     console.log("walk()");
-    exec(`nimpretty --maxLineLen:999 {filename}`, (err, stdout, stderr) => {
+    exec(`nimpretty --maxLineLen:{ cfg('maxLineLen') } '{ filename }'`, (err, stdout, stderr) => {
       if (err) {
         console.log(stderr);
         console.warning(err);
