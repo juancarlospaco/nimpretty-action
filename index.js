@@ -7,7 +7,9 @@ const { exec } = require('child_process');
 
 const cfg = (key) => {
   console.assert(key.length > 0);
-  core.getInput(key).trim();
+  var result = core.getInput(key).trim();
+  console.assert(result.length > 0);
+  return result;
 };
 
 
@@ -33,10 +35,11 @@ const walk = (startPath, callback) => {
 
 
 try {
-  console.log("try");
+  const cmd = `nimpretty --maxLineLen:{cfg('maxLineLen')} --indent:{cfg('indent')} `;
+  console.log(cmd);
   walk(cfg('folder'), function (filename) {
     console.log("walk()");
-    exec(`nimpretty --maxLineLen:{cfg('maxLineLen')} --indent:{cfg('indent')} '{filename}'`, (err, stdout, stderr) => {
+    exec(cmd + filename, (err, stdout, stderr) => {
       if (err) {
         console.log(stderr);
         console.warning(err);
