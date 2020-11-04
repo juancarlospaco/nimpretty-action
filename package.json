@@ -10,7 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/juancarlospaco/nimpretty-action.git"
   },
-  "keywords": ["nim"],
+  "keywords": [
+    "nim"
+  ],
   "author": "Juan Carlos",
   "license": "MIT",
   "dependencies": {
