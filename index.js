@@ -14,6 +14,7 @@ const cfg = (key) => {
 
 
 const walk = (startPath, callback) => {
+  console.assert(startPath.length > 0);
   if (!fs.existsSync(startPath)) {
     return;
   }
@@ -33,12 +34,12 @@ const walk = (startPath, callback) => {
 
 
 try {
-  const cmd = `nimpretty --maxLineLen:${ cfg('maxLineLen') } --indent:${ cfg('indent') } `;
+  const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
   walk(cfg('folder'), function (filename) {
     console.log(cmd + filename);
     exec(cmd + filename, (err, stdout, stderr) => {
       if (err) {
-        console.log(stderr, stdout, err);
+        core.setFailed(`${stderr} ${stdout} ${err}`);
         return;
       };
     });
