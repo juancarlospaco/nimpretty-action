@@ -25,7 +25,7 @@ const walk = (startPath, filter, callback) => {
 
 const getRegexFilter = () => {
   try {
-    return new RegExp(core.getInput('filter'));
+    return new RegExp(core.getInput('filter').trim());
   } catch (err) {
     return /\.nim$/;
   };
@@ -34,7 +34,7 @@ const getRegexFilter = () => {
 
 const getFolder = () => {
   try {
-    return core.getInput('folder');
+    return core.getInput('folder').trim();
   } catch (err) {
     return '.';
   };
@@ -43,13 +43,13 @@ const getFolder = () => {
 
 try {
   walk(getFolder(), getRegexFilter(), function (filename) {
-    exec('nimpretty --maxLineLen:999 ' + filename, (err, stdout, stderr) => {
+    exec(`nimpretty --maxLineLen:999 {filename}`, (err, stdout, stderr) => {
       if (err) {
+        console.log(stderr);
         console.warning(err);
         return;
       } else {
-        console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
+        console.log(stdout);
       }
     });
   });
