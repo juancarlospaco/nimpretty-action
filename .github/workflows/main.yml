@@ -12,6 +12,3 @@ jobs:
 
       - name: nimpretty
         uses: juancarlospaco/nimpretty-action@main
-        with:
-          folder: "."
-          extension: ".nim"

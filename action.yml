@@ -5,10 +5,10 @@ inputs:
     description: 'Folder to start recursive walking from'
     required: false
     default: '.'
-  extension:
-    description: 'File Extension to filter the recursive walking files'
+  indent:
+    description: '--indent'
     required: false
-    default: ".nim"
+    default: 2
   maxLineLen:
     description: '--maxLineLen'
     required: false

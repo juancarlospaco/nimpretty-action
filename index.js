@@ -10,7 +10,7 @@ const cfg = (key) => {
 };
 
 
-const walk = (startPath, filter, callback) => {
+const walk = (startPath, callback) => {
   if (!fs.existsSync(startPath)) {
     return;
   }
@@ -20,18 +20,18 @@ const walk = (startPath, filter, callback) => {
     var filename = path.join(startPath, files[i]);
     var stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
-        walk(filename, filter, callback);
+        walk(filename, callback);
     } else {
-      if (filename.indexOf(filter) >= 0) callback(filename);
+      if (filename.indexOf(".nim") >= 0) callback(filename);
     }
   };
 };
 
 
 try {
-  walk(cfg('folder'), cfg('extension'), function (filename) {
+  walk(cfg('folder'), function (filename) {
     console.log("walk()");
-    exec(`nimpretty --maxLineLen:{ cfg('maxLineLen') } '{ filename }'`, (err, stdout, stderr) => {
+    exec(`nimpretty --maxLineLen:{cfg('maxLineLen')} --indent:{cfg('indent')} '{filename}'`, (err, stdout, stderr) => {
       if (err) {
         console.log(stderr);
         console.warning(err);
