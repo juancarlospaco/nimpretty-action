@@ -27,3 +27,10 @@ jobs:
 
 - `jiro4989/setup-nim-action` to setup Nim with nimpretty.
 - `EndBug/add-and-commit` to commit all nimpretty fixes back to the Git repo.
+
+
+# FAQ
+
+- Why not take care of seting up Nim by itself?.
+
+Because some people do with with just Git or Gitnim or Choosenim.
