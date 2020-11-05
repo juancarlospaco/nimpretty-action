@@ -31,6 +31,6 @@ jobs:
 
 # FAQ
 
-- Why not take care of seting up Nim by itself?.
+- Why not take care of setting up Nim by itself?.
 
-Because some people do with with just Git or Gitnim or Choosenim.
+Because some people do it with just Git or Gitnim or Choosenim.
