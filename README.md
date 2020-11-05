@@ -37,4 +37,4 @@ Because some people already do it with just Git or Gitnim or Choosenim or setup-
 
 - Why not take care of commiting the files by itself?.
 
-Because some people already do it with `EndBug/add-and-commit` or `stefanzweifel/git-auto-commit-action`.
+Because some people already do it with `EndBug/add-and-commit` or `stefanzweifel/git-auto-commit-action` or `github-actions/auto-commit`.
