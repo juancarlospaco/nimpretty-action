@@ -33,4 +33,8 @@ jobs:
 
 - Why not take care of setting up Nim by itself?.
 
-Because some people do it with just Git or Gitnim or Choosenim or setup-nim-action.
+Because some people already do it with just Git or Gitnim or Choosenim or setup-nim-action.
+
+- Why not take care of commiting the files by itself?.
+
+Because some people already do it with `EndBug/add-and-commit` or `stefanzweifel/git-auto-commit-action`.
