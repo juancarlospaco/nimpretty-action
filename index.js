@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const core = require('@actions/core');
 const { exec } = require('child_process');
-const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
+
 
 const cfg = (key) => {
   console.assert(key.length > 0);
@@ -13,7 +13,7 @@ const cfg = (key) => {
 };
 
 
-const walk = (startPath, callback) => {
+const walk = (startPath, cmd, callback) => {
   console.assert(startPath.length > 0);
   var counter = 0;
   if (!fs.existsSync(startPath)) {
@@ -38,7 +38,8 @@ const walk = (startPath, callback) => {
 
 const walks = (currentValue, index) => {
   console.log("\nfolder\t'" + currentValue + "'");
-  walk(currentValue, function (filename) {
+  const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
+  walk(currentValue, cmd, function (filename) {
     exec(cmd + filename, (err, stdout, stderr) => {
       if (err) {
         core.setFailed(`${stderr} ${stdout} ${err}`);
