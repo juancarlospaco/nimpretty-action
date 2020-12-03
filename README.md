@@ -21,9 +21,9 @@ jobs:
       - uses: jiro4989/setup-nim-action@v1
       - uses: juancarlospaco/nimpretty-action@main
         with:
-          indent:     2                   # Optional
-          folder:     ["folder/", "src/"] # Optional
-          maxLineLen: 100                 # Optional
+          indent:     2                  # Optional
+          folder:     "folder,src,tests" # Optional
+          maxLineLen: 100                # Optional
 ```
 
 
