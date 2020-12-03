@@ -26,7 +26,7 @@ jobs:
 # Options
 
 - `indent` Optional, positive integer, defaults to `2`, recommended value `2`.
-- `folder` Optional, comma separated list of folders, defaults to `"."`.
+- `folders` Optional, comma separated list of folders, defaults to `"."`.
 - `maxLineLen` Optional, positive integer, recommended value >= `80`.
 
 Examples:
@@ -35,7 +35,7 @@ Examples:
 - uses: juancarlospaco/nimpretty-action@main
   with:
     indent: 2
-    folder: "src,docs,examples"
+    folders: "src,docs,examples"
     maxLineLen: 420
 ```
 
@@ -44,7 +44,7 @@ Examples:
 - uses: juancarlospaco/nimpretty-action@main
   with:
     indent: 2
-    folder: "src"
+    folders: "src"
     maxLineLen: 100
 ```
 
