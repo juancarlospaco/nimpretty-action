@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const core = require('@actions/core');
 const { exec } = require('child_process');
-
+const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
 
 const cfg = (key) => {
   console.assert(key.length > 0);
@@ -15,6 +15,7 @@ const cfg = (key) => {
 
 const walk = (startPath, callback) => {
   console.assert(startPath.length > 0);
+  var counter = 0;
   if (!fs.existsSync(startPath)) {
     return;
   }
@@ -26,7 +27,8 @@ const walk = (startPath, callback) => {
         walk(filename, callback);
     } else {
       if (filename.length > 0 && filename[0] != "." && filename.substr(filename.length - 4, filename.length) == ".nim") {
-        console.log(i + "\t" + filename);
+        console.log(counter + "\t" + cmd + filename);
+        counter++;
         callback(filename);
       }
     }
@@ -35,8 +37,7 @@ const walk = (startPath, callback) => {
 
 
 const walks = (currentValue, index) => {
-  console.log("\nfolder\t" + currentValue);
-  const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
+  console.log("\nfolder\t'" + currentValue + "'");
   walk(currentValue, function (filename) {
     exec(cmd + filename, (err, stdout, stderr) => {
       if (err) {
