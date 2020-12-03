@@ -21,9 +21,26 @@ jobs:
       - uses: jiro4989/setup-nim-action@v1
       - uses: juancarlospaco/nimpretty-action@main
         with:
-          indent: 2              # Optional, positive integer, default 2
-          folder: "src,docs,etc" # Optional, comma separated folders, default "."
-          maxLineLen: 100        # Optional, positive integer
+          indent: 2
+          folder: "src"
+          maxLineLen: 100
+```
+
+
+# Options
+
+- `indent` Optional, positive integer, defaults to `2`, recommended value `2`.
+- `folder` Optional, comma separated list of folders, defaults to `"."`.
+- `maxLineLen` Optional, positive integer, recommended value >= `80`.
+
+Examples:
+
+```yml
+- uses: juancarlospaco/nimpretty-action@main
+  with:
+    indent: 2
+    folder: "src,docs,examples"
+    maxLineLen: 420
 ```
 
 
