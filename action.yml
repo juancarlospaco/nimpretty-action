@@ -4,8 +4,7 @@ inputs:
   folders:
     description: 'Folders to start recursive walking from'
     required: false
-    default:
-      - '.'
+    default: '.'
   indent:
     description: '--indent'
     required: false
