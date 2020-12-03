@@ -26,6 +26,7 @@ const walk = (startPath, callback) => {
         walk(filename, callback);
     } else {
       if (filename.length > 0 && filename[0] != "." && filename.substr(filename.length - 4, filename.length) == ".nim") {
+        console.log(i + "\t" + filename);
         callback(filename);
       }
     }
@@ -33,10 +34,9 @@ const walk = (startPath, callback) => {
 };
 
 
-try {
-  const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
-  walk(cfg('folder'), function (filename) {
-    console.log(cmd + filename);
+const walks = (currentValue, index) => {
+  console.log("\nfolder\t" + currentValue);
+  walk(currentValue, function (filename) {
     exec(cmd + filename, (err, stdout, stderr) => {
       if (err) {
         core.setFailed(`${stderr} ${stdout} ${err}`);
@@ -44,6 +44,12 @@ try {
       };
     });
   });
+};
+
+
+try {
+  const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
+  cfg('folders').forEach(walks);
 } catch (error) {
   core.setFailed(error.message);
 }
