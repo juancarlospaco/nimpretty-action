@@ -20,10 +20,6 @@ jobs:
       - uses: actions/checkout@master
       - uses: jiro4989/setup-nim-action@v1
       - uses: juancarlospaco/nimpretty-action@main
-        with:
-          indent: 2
-          folder: "src"
-          maxLineLen: 100
 ```
 
 
@@ -41,6 +37,15 @@ Examples:
     indent: 2
     folder: "src,docs,examples"
     maxLineLen: 420
+```
+
+
+```yml
+- uses: juancarlospaco/nimpretty-action@main
+  with:
+    indent: 2
+    folder: "src"
+    maxLineLen: 100
 ```
 
 
