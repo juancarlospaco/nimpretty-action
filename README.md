@@ -20,6 +20,10 @@ jobs:
       - uses: actions/checkout@master
       - uses: jiro4989/setup-nim-action@v1
       - uses: juancarlospaco/nimpretty-action@main
+        with:
+          indent:     2          # Optional
+          folder:     "folder/"  # Optional
+          maxLineLen: 100        # Optional
 ```
 
 
