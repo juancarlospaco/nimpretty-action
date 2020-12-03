@@ -36,6 +36,7 @@ const walk = (startPath, callback) => {
 
 const walks = (currentValue, index) => {
   console.log("\nfolder\t" + currentValue);
+  const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
   walk(currentValue, function (filename) {
     exec(cmd + filename, (err, stdout, stderr) => {
       if (err) {
@@ -48,7 +49,6 @@ const walks = (currentValue, index) => {
 
 
 try {
-  const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
   cfg('folders').split(',').forEach(walks);
 } catch (error) {
   core.setFailed(error.message);
