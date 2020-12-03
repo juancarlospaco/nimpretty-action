@@ -49,7 +49,7 @@ const walks = (currentValue, index) => {
 
 try {
   const cmd = `nimpretty --indent:${ cfg('indent') } --maxLineLen:${ cfg('maxLineLen') } `;
-  cfg('folders').forEach(walks);
+  cfg('folders').split(',').forEach(walks);
 } catch (error) {
   core.setFailed(error.message);
 }
