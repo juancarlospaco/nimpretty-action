@@ -24,7 +24,7 @@ const walk = (startPath, cmd, callback) => {
     var filename = path.join(startPath, files[i]);
     var stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
-        walk(filename, callback);
+      walk(filename, cmd, callback);
     } else {
       if (filename.length > 0 && filename[0] != "." && filename.substr(filename.length - 4, filename.length) == ".nim") {
         console.log(counter + "\t" + cmd + filename);
